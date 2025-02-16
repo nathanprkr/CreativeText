@@ -27,15 +27,14 @@
   <script src="https://unpkg.com/tracery-grammar@0.2.5/tracery.min.js"></script>
   <script>
     window.addEventListener("load", function() {
-      // Check that tracery is available.
+      // Check that the Tracery library loaded successfully.
       if (typeof tracery === "undefined") {
         console.error("Tracery is not defined.");
         document.getElementById("story").innerText = "Error: Tracery library failed to load.";
         return;
       }
-      console.log("Tracery loaded:", tracery);
-
-      // Base grammar structure for the story.
+      
+      // Define the base grammar (story structure and placeholders).
       var baseGrammar = {
         "origin": ["#story#"],
         "story": ["#intro# #conflict# #climax# #resolution#"],
@@ -53,8 +52,8 @@
         ]
       };
 
-      // Fetch external word lists from filtered_categories.json.
-      fetch('filtered_categories.json')
+      // Fetch the external word lists from words.json.
+      fetch('words.json')
         .then(response => {
           if (!response.ok) {
             throw new Error("Network response was not ok: " + response.statusText);
@@ -71,13 +70,14 @@
               });
             }
           }
-
-          // Merge the base grammar with the external grammar.
+          
+          // Merge the base grammar with the external word lists.
+          // If both define a category, the external words take precedence.
           var combinedGrammar = Object.assign({}, baseGrammar, externalGrammar);
-
-          // Create a Tracery grammar using the combined grammar.
+          
+          // Create the Tracery grammar using the combined grammar.
           var traceryGrammar = tracery.createGrammar(combinedGrammar);
-          // Generate the story text using the "origin" rule.
+          // Generate the story using the "origin" rule.
           var generatedText = traceryGrammar.flatten("#origin#");
           // Display the generated story on the page.
           document.getElementById("story").innerText = generatedText;
