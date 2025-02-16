@@ -23,12 +23,11 @@
   <h1>Science Fiction Story</h1>
   <div id="story">Loading story...</div>
 
-  <!-- Load the Tracery library -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/tracery/0.2.5/tracery.min.js"></script>
-  <!-- Our inline script goes after the Tracery library -->
+  <!-- Load the Tracery library from unpkg -->
+  <script src="https://unpkg.com/tracery-grammar@0.2.5/tracery.min.js"></script>
   <script>
     window.addEventListener("load", function() {
-      // Check if the Tracery library has been loaded successfully.
+      // Check that tracery is available.
       if (typeof tracery === "undefined") {
         console.error("Tracery is not defined.");
         document.getElementById("story").innerText = "Error: Tracery library failed to load.";
@@ -36,7 +35,7 @@
       }
       console.log("Tracery loaded:", tracery);
 
-      // Define the base grammar for the story structure.
+      // Base grammar structure for the story.
       var baseGrammar = {
         "origin": ["#story#"],
         "story": ["#intro# #conflict# #climax# #resolution#"],
@@ -54,7 +53,7 @@
         ]
       };
 
-      // Fetch the external word lists from filtered_categories.json.
+      // Fetch external word lists from filtered_categories.json.
       fetch('filtered_categories.json')
         .then(response => {
           if (!response.ok) {
@@ -73,14 +72,14 @@
             }
           }
 
-          // Merge the base grammar with the external grammar (external takes precedence).
+          // Merge the base grammar with the external grammar.
           var combinedGrammar = Object.assign({}, baseGrammar, externalGrammar);
 
-          // Create the Tracery grammar using the combined grammar.
+          // Create a Tracery grammar using the combined grammar.
           var traceryGrammar = tracery.createGrammar(combinedGrammar);
           // Generate the story text using the "origin" rule.
           var generatedText = traceryGrammar.flatten("#origin#");
-          // Display the generated text on the page.
+          // Display the generated story on the page.
           document.getElementById("story").innerText = generatedText;
         })
         .catch(error => {
