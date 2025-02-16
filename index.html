@@ -45,7 +45,7 @@
     };
 
     // Load external word lists from filtered_categories.json and merge them into the grammar.
-    fetch('filtered_categories.json')
+    fetch('/filtered_categories.json')
       .then(response => response.json())
       .then(externalData => {
         // Convert each category's array of objects to an array of words.
