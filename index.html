@@ -25,27 +25,24 @@
 
   <!-- Load jQuery from CDN -->
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <!-- Define a global module to help Tracery load in a browser context -->
-  <script>var module = {};</script>
-  <!-- Load Tracery from cdnjs -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/tracery/0.2.5/tracery.min.js"></script>
+  <!-- Load Tracery from jsDelivr (from the official GitHub repository) -->
+  <script src="https://cdn.jsdelivr.net/gh/galaxykate/tracery/tracery.min.js"></script>
   <script>
     $(document).ready(function() {
-      // Check that the Tracery library loaded properly.
+      // Check that the Tracery library is loaded
       if (typeof tracery === "undefined") {
         console.error("Tracery is not defined.");
         $("#output").text("Error: Tracery library failed to load.");
         return;
       }
-
-      // Load the grammar and word lists from external JSON files.
+      
+      // Load both the grammar (grammer.json) and the word lists (words.json) concurrently.
       $.when($.getJSON("grammer.json"), $.getJSON("words.json")).done(function(grammarData, wordsData) {
-        // Each getJSON returns an array: [data, status, jqXHR]
+        // The returned data arrays: [ data, status, jqXHR ]
         var baseGrammar = grammarData[0];
         var wordLists = wordsData[0];
-
-        // For each category in the word list file, convert the array of objects
-        // into an array of strings (the word property), and merge it into baseGrammar.
+        
+        // Convert each word list (array of objects) to a simple array of words.
         for (var key in wordLists) {
           if (wordLists.hasOwnProperty(key)) {
             baseGrammar[key] = wordLists[key].map(function(item) {
@@ -53,8 +50,8 @@
             });
           }
         }
-
-        // Create a Tracery grammar using the combined data.
+        
+        // Create the Tracery grammar using the combined data.
         var traceryGrammar = tracery.createGrammar(baseGrammar);
         // Generate the story text using the "origin" rule.
         var generatedText = traceryGrammar.flatten("#origin#");
