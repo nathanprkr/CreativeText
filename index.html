@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Science Fiction Story Generator</title>
+  <!-- Load the Tracery library from a CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tracery/0.2.5/tracery.min.js"></script>
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 2em;
+      line-height: 1.6;
+    }
+    #story {
+      margin-top: 1em;
+      padding: 1em;
+      background: #f4f4f4;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Generated Science Fiction Story</h1>
+  <div id="story">Loading...</div>
+
+  <script>
+    // Base grammar structure (story structure and rules)
+    var baseGrammar = {
+      "origin": ["#story#"],
+      "story": ["#intro# #conflict# #climax# #resolution#"],
+      "intro": ["In the distant future, #hero.capitalize# set out on a daring journey aboard a #vehicle# to explore #planet#."],
+      "conflict": ["There, a #adjective# #enemy# emerged, threatening the very fabric of #universe#."],
+      "climax": ["After a fierce struggle, #hero# activated a #technology# to #action# the invader."],
+      "resolution": ["At last, peace was restored, and the legend of #hero# echoed throughout #universe#."]
+    };
+
+    // Fetch word categories from filtered_categories.json and merge with the base grammar.
+    fetch('filtered_categories.json')
+      .then(response => response.json())
+      .then(externalGrammar => {
+        // Merge the external word categories with our base grammar.
+        // It is assumed that filtered_categories.json contains keys like "hero", "planet", "vehicle", etc.
+        var combinedGrammar = Object.assign({}, baseGrammar, externalGrammar);
+
+        // Create the Tracery grammar using the combined grammar
+        var traceryGrammar = tracery.createGrammar(combinedGrammar);
+        // Generate the story text using the "origin" rule
+        var generatedText = traceryGrammar.flatten("#origin#");
+        // Display the generated text in the page
+        document.getElementById("story").innerText = generatedText;
+      })
+      .catch(error => {
+        console.error("Error loading filtered_categories.json:", error);
+        document.getElementById("story").innerText = "Error loading word categories.";
+      });
+  </script>
+</body>
+</html>
