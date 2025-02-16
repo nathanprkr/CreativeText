@@ -23,11 +23,11 @@
 </head>
 <body>
   <h1>Science Fiction Story</h1>
-  <div id="story"></div>
+  <div id="story">Loading story...</div>
 
   <script>
-    // Define the JSON grammar using your categories
-    var grammar = {
+    // Define the base grammar for the story structure.
+    var baseGrammar = {
       "origin": ["#story#"],
       "story": ["#intro# #conflict# #climax# #resolution#"],
       "intro": [
@@ -44,12 +44,35 @@
       ]
     };
 
-    // Create the Tracery grammar and generate the story
-    var traceryGrammar = tracery.createGrammar(grammar);
-    var generatedText = traceryGrammar.flatten("#origin#");
+    // Load external word lists from filtered_categories.json and merge them into the grammar.
+    fetch('filtered_categories.json')
+      .then(response => response.json())
+      .then(externalData => {
+        // Convert each category's array of objects to an array of words.
+        var externalGrammar = {};
+        for (var key in externalData) {
+          if (externalData.hasOwnProperty(key)) {
+            externalGrammar[key] = externalData[key].map(function(item) {
+              return item.word;
+            });
+          }
+        }
 
-    // Display the generated story in the page
-    document.getElementById("story").innerText = generatedText;
+        // Merge baseGrammar with externalGrammar.
+        // For keys that appear in both, the external list will be used.
+        var combinedGrammar = Object.assign({}, baseGrammar, externalGrammar);
+
+        // Create a Tracery grammar using the combined grammar.
+        var traceryGrammar = tracery.createGrammar(combinedGrammar);
+        // Generate the story using the "origin" rule.
+        var generatedText = traceryGrammar.flatten("#origin#");
+        // Display the generated text on the page.
+        document.getElementById("story").innerText = generatedText;
+      })
+      .catch(error => {
+        console.error("Error loading word categories:", error);
+        document.getElementById("story").innerText = "Error loading word categories.";
+      });
   </script>
 </body>
 </html>
