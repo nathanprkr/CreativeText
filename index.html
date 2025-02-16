@@ -8,51 +8,48 @@
   <style>
     body {
       font-family: sans-serif;
-      margin: 2em;
-      line-height: 1.6;
+      padding: 20px;
+      background-color: #f0f0f0;
     }
     #story {
-      margin-top: 1em;
-      padding: 1em;
-      background: #f4f4f4;
+      margin-top: 20px;
+      padding: 20px;
+      background: #fff;
       border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      line-height: 1.6;
     }
   </style>
 </head>
 <body>
-  <h1>Generated Science Fiction Story</h1>
-  <div id="story">Loading...</div>
+  <h1>Science Fiction Story</h1>
+  <div id="story"></div>
 
   <script>
-    // Base grammar structure (story structure and rules)
-    var baseGrammar = {
+    // Define the JSON grammar using your categories
+    var grammar = {
       "origin": ["#story#"],
       "story": ["#intro# #conflict# #climax# #resolution#"],
-      "intro": ["In the distant future, #hero.capitalize# set out on a daring journey aboard a #vehicle# to explore #planet#."],
-      "conflict": ["There, a #adjective# #enemy# emerged, threatening the very fabric of #universe#."],
-      "climax": ["After a fierce struggle, #hero# activated a #technology# to #action# the invader."],
-      "resolution": ["At last, peace was restored, and the legend of #hero# echoed throughout #universe#."]
+      "intro": [
+        "In the year #noun.time#, the celebrated #noun.person.capitalize# embarked on a daring #noun.act# at #noun.location#, amidst strange #noun.plant#s, clutching a mysterious #noun.artifact# and a cherished #noun.possession#."
+      ],
+      "conflict": [
+        "Suddenly, a #noun.quantity# crowd witnessed a #adj.all# #noun.event# erupt; the skies #verb.weather# and a colossal #noun.animal# roared, instilling deep #noun.feeling# in all, as many began to #verb.social# and #verb.cognition# the unfolding mystery."
+      ],
+      "climax": [
+        "With determination, the brave #noun.group# #verb.motion# #adv.all# toward the chaos, striving to #verb.change# the dire #noun.state# of their world. Amidst this turmoil, a peculiar #noun.shape# appeared—a #noun.phenomenon# that seemed to #verb.perception# the very fabric of reality."
+      ],
+      "resolution": [
+        "Ultimately, through ingenious #verb.creation# and by #verb.possession# a hidden power, they #verb.competition# against the odds. As they #verb.consumption# a victory feast of #noun.food#, their collective #noun.cognition# illuminated the path to a future of renewed hope and prosperity."
+      ]
     };
 
-    // Fetch word categories from filtered_categories.json and merge with the base grammar.
-    fetch('filtered_categories.json')
-      .then(response => response.json())
-      .then(externalGrammar => {
-        // Merge the external word categories with our base grammar.
-        // It is assumed that filtered_categories.json contains keys like "hero", "planet", "vehicle", etc.
-        var combinedGrammar = Object.assign({}, baseGrammar, externalGrammar);
+    // Create the Tracery grammar and generate the story
+    var traceryGrammar = tracery.createGrammar(grammar);
+    var generatedText = traceryGrammar.flatten("#origin#");
 
-        // Create the Tracery grammar using the combined grammar
-        var traceryGrammar = tracery.createGrammar(combinedGrammar);
-        // Generate the story text using the "origin" rule
-        var generatedText = traceryGrammar.flatten("#origin#");
-        // Display the generated text in the page
-        document.getElementById("story").innerText = generatedText;
-      })
-      .catch(error => {
-        console.error("Error loading filtered_categories.json:", error);
-        document.getElementById("story").innerText = "Error loading word categories.";
-      });
+    // Display the generated story in the page
+    document.getElementById("story").innerText = generatedText;
   </script>
 </body>
 </html>
