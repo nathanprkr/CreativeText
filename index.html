@@ -25,54 +25,69 @@
 
   <!-- Load the Tracery library -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/tracery/0.2.5/tracery.min.js"></script>
-  <!-- Our inline script goes after Tracery is loaded -->
+  <!-- Our inline script goes after the Tracery library -->
   <script>
-    // Define the base grammar for the story structure.
-    var baseGrammar = {
-      "origin": ["#story#"],
-      "story": ["#intro# #conflict# #climax# #resolution#"],
-      "intro": [
-        "In the year #noun.time#, the celebrated #noun.person.capitalize# embarked on a daring #noun.act# at #noun.location#, amidst strange #noun.plant#s, clutching a mysterious #noun.artifact# and a cherished #noun.possession#."
-      ],
-      "conflict": [
-        "Suddenly, a #noun.quantity# crowd witnessed a #adj.all# #noun.event# erupt; the skies #verb.weather# and a colossal #noun.animal# roared, instilling deep #noun.feeling# in all, as many began to #verb.social# and #verb.cognition# the unfolding mystery."
-      ],
-      "climax": [
-        "With determination, the brave #noun.group# #verb.motion# #adv.all# toward the chaos, striving to #verb.change# the dire #noun.state# of their world. Amidst this turmoil, a peculiar #noun.shape# appeared—a #noun.phenomenon# that seemed to #verb.perception# the very fabric of reality."
-      ],
-      "resolution": [
-        "Ultimately, through ingenious #verb.creation# and by #verb.possession# a hidden power, they #verb.competition# against the odds. As they #verb.consumption# a victory feast of #noun.food#, their collective #noun.cognition# illuminated the path to a future of renewed hope and prosperity."
-      ]
-    };
+    window.addEventListener("load", function() {
+      // Check if the Tracery library has been loaded successfully.
+      if (typeof tracery === "undefined") {
+        console.error("Tracery is not defined.");
+        document.getElementById("story").innerText = "Error: Tracery library failed to load.";
+        return;
+      }
+      console.log("Tracery loaded:", tracery);
 
-    // Fetch the external word lists from filtered_categories.json.
-    fetch('filtered_categories.json')
-      .then(response => response.json())
-      .then(externalData => {
-        // Convert each category's array of objects into an array of words.
-        var externalGrammar = {};
-        for (var key in externalData) {
-          if (externalData.hasOwnProperty(key)) {
-            externalGrammar[key] = externalData[key].map(function(item) {
-              return item.word;
-            });
+      // Define the base grammar for the story structure.
+      var baseGrammar = {
+        "origin": ["#story#"],
+        "story": ["#intro# #conflict# #climax# #resolution#"],
+        "intro": [
+          "In the year #noun.time#, the celebrated #noun.person.capitalize# embarked on a daring #noun.act# at #noun.location#, amidst strange #noun.plant#s, clutching a mysterious #noun.artifact# and a cherished #noun.possession#."
+        ],
+        "conflict": [
+          "Suddenly, a #noun.quantity# crowd witnessed a #adj.all# #noun.event# erupt; the skies #verb.weather# and a colossal #noun.animal# roared, instilling deep #noun.feeling# in all, as many began to #verb.social# and #verb.cognition# the unfolding mystery."
+        ],
+        "climax": [
+          "With determination, the brave #noun.group# #verb.motion# #adv.all# toward the chaos, striving to #verb.change# the dire #noun.state# of their world. Amidst this turmoil, a peculiar #noun.shape# appeared—a #noun.phenomenon# that seemed to #verb.perception# the very fabric of reality."
+        ],
+        "resolution": [
+          "Ultimately, through ingenious #verb.creation# and by #verb.possession# a hidden power, they #verb.competition# against the odds. As they #verb.consumption# a victory feast of #noun.food#, their collective #noun.cognition# illuminated the path to a future of renewed hope and prosperity."
+        ]
+      };
+
+      // Fetch the external word lists from filtered_categories.json.
+      fetch('filtered_categories.json')
+        .then(response => {
+          if (!response.ok) {
+            throw new Error("Network response was not ok: " + response.statusText);
           }
-        }
+          return response.json();
+        })
+        .then(externalData => {
+          // Convert each category's array of objects into an array of words.
+          var externalGrammar = {};
+          for (var key in externalData) {
+            if (externalData.hasOwnProperty(key)) {
+              externalGrammar[key] = externalData[key].map(function(item) {
+                return item.word;
+              });
+            }
+          }
 
-        // Merge the base grammar with the external grammar.
-        var combinedGrammar = Object.assign({}, baseGrammar, externalGrammar);
+          // Merge the base grammar with the external grammar (external takes precedence).
+          var combinedGrammar = Object.assign({}, baseGrammar, externalGrammar);
 
-        // Create the Tracery grammar using the combined grammar.
-        var traceryGrammar = tracery.createGrammar(combinedGrammar);
-        // Generate the story text using the "origin" rule.
-        var generatedText = traceryGrammar.flatten("#origin#");
-        // Display the generated text on the page.
-        document.getElementById("story").innerText = generatedText;
-      })
-      .catch(error => {
-        console.error("Error loading word categories:", error);
-        document.getElementById("story").innerText = "Error loading word categories: " + error;
-      });
+          // Create the Tracery grammar using the combined grammar.
+          var traceryGrammar = tracery.createGrammar(combinedGrammar);
+          // Generate the story text using the "origin" rule.
+          var generatedText = traceryGrammar.flatten("#origin#");
+          // Display the generated text on the page.
+          document.getElementById("story").innerText = generatedText;
+        })
+        .catch(error => {
+          console.error("Error loading word categories:", error);
+          document.getElementById("story").innerText = "Error loading word categories: " + error;
+        });
+    });
   </script>
 </body>
 </html>
