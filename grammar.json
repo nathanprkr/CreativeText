@@ -4,11 +4,11 @@
   ],
 
   "firstSentence": [
-    "No one in #place# could have believed #adj.time# that the #noun.mysterious# shimmering above the #environment# heralded such #noun.peril#, or that it spelled the #theme#."
+    "No one in #place# could have believed #time# that the #mysterious# shimmering above the #environment# heralded such #peril#, or that it spelled the #theme#."
   ],
 
   "secondSentence": [
-    "Yet by #timeunit# close, the #creature# had unleashed an unthinkable #event#, forcing #protagonist# to #action# for the sake of #concept#."
+    "Yet by #timeunit#’s close, the #creature# had unleashed an unthinkable #event#, forcing #protagonist# to #action# for the sake of #concept#."
   ],
 
   "place": [
@@ -28,7 +28,7 @@
     "Duskwood Span"
   ],
 
-  "adj.time": [
+  "time": [
     "those final days",
     "the twilight of our civilization",
     "the last vestiges of peace",
@@ -43,7 +43,7 @@
     "the fading golden age"
   ],
 
-  "noun.mysterious": [
+  "mysterious": [
     "anomalous gleam",
     "uncanny radiance",
     "eerie glow",
@@ -73,7 +73,7 @@
     "shifting haze"
   ],
 
-  "noun.peril": [
+  "peril": [
     "cataclysm",
     "doom",
     "catastrophe",
