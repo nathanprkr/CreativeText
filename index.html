@@ -17,47 +17,50 @@
 
   <!-- 3. Our custom script that uses jQuery + Tracery -->
   <script>
-    $(document).ready(function() {
+    window.onload = function() {
+      // Verify that Tracery is loaded
       if (typeof tracery === 'undefined') {
         console.error("Tracery library not loaded.");
-        $("#output").text("Error: Tracery library not loaded");
+        document.getElementById("output").innerText = "Error: Tracery library not loaded";
         return;
       }
-      
-      $.getJSON("grammar.json")
-        .done(function(grammarData) {
-          try {
-            let traceryGrammar = tracery.createGrammar(grammarData);
 
-            function generateText() {
-              let generatedText = traceryGrammar.flatten("#origin#");
-              $("#output").text(generatedText);
-            }
+      $(document).ready(function() {
+        $.getJSON("grammar.json")
+          .done(function(grammarData) {
+            try {
+              let traceryGrammar = tracery.createGrammar(grammarData);
 
-            function generateImage() {
-              let generatedSVG = traceryGrammar.flatten("#image#");
-              $("#svg-container").html(generatedSVG);
-            }
+              function generateText() {
+                let generatedText = traceryGrammar.flatten("#origin#");
+                $("#output").text(generatedText);
+              }
 
-            // Generate image and text once immediately
-            generateImage();
-            generateText();
+              function generateImage() {
+                let generatedSVG = traceryGrammar.flatten("#image#");
+                $("#svg-container").html(generatedSVG);
+              }
 
-            // Generate image and text periodically, e.g., every 2 seconds:
-            setInterval(function() {
+              // Generate image and text once immediately
               generateImage();
               generateText();
-            }, 2000);
-          } catch (error) {
-            console.error("Error processing grammar:", error);
-            $("#output").text("Error processing grammar: " + error.message);
-          }
-        })
-        .fail(function(jqXHR, textStatus, errorThrown) {
-          $("#output").text("Error loading JSON: " + textStatus + " " + errorThrown);
-          console.error("Error loading JSON:", textStatus, errorThrown);
-        });
-    });
+
+              // Generate image and text periodically, e.g., every 2 seconds:
+              setInterval(function(){
+                generateImage();
+                generateText();
+              }, 2000);
+            } catch (error) {
+              console.error("Error processing grammar:", error);
+              $("#output").text("Error processing grammar: " + error.message);
+            }
+          })
+          .fail(function(jqXHR, textStatus, errorThrown) {
+            $("#output").text("Error loading JSON: " + textStatus + " " + errorThrown);
+            console.error("Error loading JSON:", textStatus, errorThrown);
+          });
+      });
+    };
   </script>
 </body>
 </html>
