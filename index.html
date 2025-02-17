@@ -29,6 +29,12 @@
 
   <script>
     $(document).ready(function() {
+      // Ensure Tracery is loaded
+      if (typeof tracery === 'undefined') {
+        $("#output").text("Error: Tracery library not loaded.");
+        return;
+      }
+
       // Load the JSON grammar file using jQuery's getJSON
       $.getJSON("grammer.json")
         .done(function(grammarData) {
