@@ -4,63 +4,54 @@
   <meta charset="UTF-8">
   <title>Tracery Story Generator</title>
   <link rel="stylesheet" href="style.css">
+  <!-- Load p5 and Tracery -->
+  <script src="p5.min.js"></script>
+  <script src="tracery.min.js"></script>
 </head>
 <body>
   <h1>Generated Science Fiction Story</h1>
-  <div id="svg-container">Loading image...</div>
-  <div id="output">Loading story...</div>
-
-  <!-- 1. Load jQuery -->
-  <script src="jquery-3.7.1.min.js"></script>
-  <!-- 2. Load Tracery -->
-  <script src="tracery.min.js"></script>
-
-  <!-- 3. Our custom script that uses jQuery + Tracery -->
+  
   <script>
-    window.onload = function() {
-      // Verify that Tracery is loaded
-      if (typeof tracery === 'undefined') {
-        console.error("Tracery library not loaded.");
-        document.getElementById("output").innerText = "Error: Tracery library not loaded";
-        return;
+    let grammarData, traceryGrammar, originText;
+    let yPos = 0; // Vertical position of the text
+
+    // p5 preload() loads external assets before setup()
+    function preload() {
+      // Load the grammar JSON file from local disk
+      grammarData = loadJSON('grammar.json');
+    }
+    
+    function setup() {
+      // Create a full-window canvas
+      createCanvas(windowWidth, windowHeight);
+      background(0);
+      fill('lime');        // Neon green fill for text
+      textSize(32);
+      textAlign(CENTER, CENTER);
+      
+      // Create the tracery grammar from the loaded JSON
+      traceryGrammar = tracery.createGrammar(grammarData);
+      // Flatten the origin production to generate text
+      originText = traceryGrammar.flatten("#origin#");
+      yPos = 0; // Start at the top of the canvas
+    }
+    
+    function draw() {
+      background(0);
+      // Draw the generated text at the current vertical position
+      text(originText, width / 2, yPos);
+      // Increase yPos so the text falls
+      yPos += 1;
+      // Reset to the top if text has reached below the canvas
+      if (yPos > height) {
+        yPos = 0;
       }
-
-      $(document).ready(function() {
-        $.getJSON("grammar.json")
-          .done(function(grammarData) {
-            try {
-              let traceryGrammar = tracery.createGrammar(grammarData);
-
-              function generateText() {
-                let generatedText = traceryGrammar.flatten("#origin#");
-                $("#output").text(generatedText);
-              }
-
-              function generateImage() {
-                let generatedSVG = traceryGrammar.flatten("#image#");
-                $("#svg-container").html(generatedSVG);
-              }
-
-              // Generate image and text once immediately
-              generateImage();
-              generateText();
-
-              // Generate image and text periodically, e.g., every 2 seconds:
-              setInterval(function(){
-                generateImage();
-                generateText();
-              }, 2000);
-            } catch (error) {
-              console.error("Error processing grammar:", error);
-              $("#output").text("Error processing grammar: " + error.message);
-            }
-          })
-          .fail(function(jqXHR, textStatus, errorThrown) {
-            $("#output").text("Error loading JSON: " + textStatus + " " + errorThrown);
-            console.error("Error loading JSON:", textStatus, errorThrown);
-          });
-      });
-    };
+    }
+    
+    // Optional: Adjust canvas size on window resize
+    function windowResized() {
+      resizeCanvas(windowWidth, windowHeight);
+    }
   </script>
 </body>
 </html>
