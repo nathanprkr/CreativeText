@@ -13,11 +13,12 @@ h1 {
   text-align: center;
   font-size: 2.5em;
   margin-bottom: 20px;
-  color: #45a29e;
+  color: #ffffff;
   text-shadow: 0 0 10px lime;
 }
 
 #output {
+    text-align: center;
   margin-top: 20px;
   padding: 20px;
   background-color: #111;
