@@ -2,225 +2,219 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Tracery Single-File Example</title>
-  <!-- Load local jQuery and Tracery libraries -->
+  <title>Tracery Single-File Example (Fixed)</title>
+
+  <!-- 1. Load local jQuery (if needed) -->
   <script src="jquery-3.7.1.min.js"></script>
+
+  <!-- 2. Load local Tracery -->
   <script src="tracery.min.js"></script>
 </head>
 <body>
   <h1>Tracery Example</h1>
   <div id="output" style="white-space: pre-wrap; margin: 1em 0;"></div>
 
+  <!-- 3. Our custom script that uses tracery -->
   <script>
-    // Embed the JSON grammar from the example
-    const grammarData = {
-      "origin": [
-        "#intro# #conflict# #climax# #resolution#"
-      ],
-      "intro": [
-        "In the #adj.all# #noun.location# of #unknown#, a #adj.pert# #noun.person# devoted their life to #noun.act#. Every #noun.time#, they would #verb.stative# and #verb.contact# the #noun.artifact# that sparkled under the #noun.phenomenon#."
-      ],
-      "conflict": [
-        "One day, a #adj.all# #noun.animal# arrived, carrying a #noun.communication# describing a dire #noun.event#. Gathering a #noun.group# of allies, our hero set out #adv.all# to #verb.change# the course of history. Along the way, they encountered #noun.substance# that altered their #noun.state# and threatened their #noun.possession#."
-      ],
-      "climax": [
-        "In the midst of #verb.weather# and #verb.emotion#, they discovered the hidden #noun.location# where #noun.plant# grew in #noun.quantity#—the key to #noun.process#. Confronted by a #noun.person# loyal to the invaders, they had to #verb.communication# and #verb.motion# quickly or risk losing everything."
-      ],
-      "resolution": [
-        "Ultimately, by harnessing #noun.cognition# and #verb.creation#, the #noun.person# won a great #noun.competition#. They #verb.possession# a new #noun.artifact# shaped like a #noun.shape#, forging a #noun.relation# that restored peace. Returning home, they shared #noun.food# with the #noun.group# and #verb.social# in celebration—forever changed by their #verb.body# and #verb.consumption# in the face of the unknown."
-      ],
-      "unknown": [
-        "Zorath Prime",
-        "Kelaris"
-      ],
-      "noun.act": [
-        "research",
-        "exploration"
-      ],
-      "noun.person": [
-        "researcher",
-        "captain"
-      ],
-      "noun.event": [
-        "crisis",
-        "invasion"
-      ],
-      "noun.artifact": [
-        "stasis crystal",
-        "teleporter"
-      ],
-      "verb.stative": [
-        "ponder",
-        "wonder"
-      ],
-      "adv.all": [
-        "cautiously",
-        "bravely"
-      ],
-      "noun.quantity": [
-        "multitudes",
-        "vast fields"
-      ],
-      "verb.social": [
-        "rejoice",
-        "unite"
-      ],
-      "noun.location": [
-        "colony",
-        "station"
-      ],
-      "adj.all": [
-        "mysterious",
-        "ancient"
-      ],
-      "noun.object": [
-        "compass",
-        "datapad"
-      ],
-      "noun.substance": [
-        "radiant alloy",
-        "quicksilver dust"
-      ],
-      "noun.communication": [
-        "message",
-        "communique"
-      ],
-      "noun.possession": [
-        "legacy",
-        "fortune"
-      ],
-      "noun.cognition": [
-        "innovation",
-        "insight"
-      ],
-      "noun.time": [
-        "twilight",
-        "era"
-      ],
-      "noun.attribute": [
-        "endurance",
-        "clarity"
-      ],
-      "verb.consumption": [
-        "absorb",
-        "devour"
-      ],
-      "noun.state": [
-        "calm",
-        "turmoil"
-      ],
-      "verb.possession": [
-        "claim",
-        "obtain"
-      ],
-      "noun.group": [
-        "crew",
-        "council"
-      ],
-      "verb.change": [
-        "alter",
-        "reshape"
-      ],
-      "noun.animal": [
-        "gryphon",
-        "drone-lizard"
-      ],
-      "noun.feeling": [
-        "hope",
-        "fear"
-      ],
-      "verb.motion": [
-        "dash",
-        "soar"
-      ],
-      "verb.communication": [
-        "signal",
-        "shout"
-      ],
-      "verb.weather": [
-        "stormed",
-        "rained"
-      ],
-      "verb.perception": [
-        "observe",
-        "sense"
-      ],
-      "noun.body": [
-        "hands",
-        "eyes"
-      ],
-      "verb.body": [
-        "tremble",
-        "kneel"
-      ],
-      "verb.emotion": [
-        "despair",
-        "rejoice"
-      ],
-      "noun.phenomenon": [
-        "eclipse",
-        "ion storm"
-      ],
-      "noun.plant": [
-        "glowshroom",
-        "whisper-vine"
-      ],
-      "verb.cognition": [
-        "calculate",
-        "deduce"
-      ],
-      "verb.contact": [
-        "touch",
-        "grasp"
-      ],
-      "noun.Tops": [
-        "peaks",
-        "mountaintops"
-      ],
-      "adj.pert": [
-        "stellar",
-        "bio-engineered"
-      ],
-      "noun.shape": [
-        "sphere",
-        "pyramid"
-      ],
-      "noun.relation": [
-        "pact",
-        "accord"
-      ],
-      "noun.process": [
-        "synthesis",
-        "adaptation"
-      ],
-      "verb.creation": [
-        "forge",
-        "build"
-      ],
-      "verb.competition": [
-        "triumph",
-        "prevail"
-      ],
-      "noun.food": [
-        "feast",
-        "banquet"
-      ]
-    };
-
-    // When the DOM is ready, create the grammar and output the result
+    // We'll do our initialization when DOM is ready.
     $(document).ready(function() {
+
+      // Our grammar definition
+      const grammarData = {
+        "origin": [
+          "#intro# #conflict# #climax# #resolution#"
+        ],
+        "intro": [
+          "In the #adj.all# #noun.location# of #unknown#, a #adj.pert# #noun.person# devoted their life to #noun.act#. Every #noun.time#, they would #verb.stative# and #verb.contact# the #noun.artifact# that sparkled under the #noun.phenomenon#."
+        ],
+        "conflict": [
+          "One day, a #adj.all# #noun.animal# arrived, carrying a #noun.communication# describing a dire #noun.event#. Gathering a #noun.group# of allies, our hero set out #adv.all# to #verb.change# the course of history. Along the way, they encountered #noun.substance# that altered their #noun.state# and threatened their #noun.possession#."
+        ],
+        "climax": [
+          "In the midst of #verb.weather# and #verb.emotion#, they discovered the hidden #noun.location# where #noun.plant# grew in #noun.quantity#—the key to #noun.process#. Confronted by a #noun.person# loyal to the invaders, they had to #verb.communication# and #verb.motion# quickly or risk losing everything."
+        ],
+        "resolution": [
+          "Ultimately, by harnessing #noun.cognition# and #verb.creation#, the #noun.person# won a great #noun.competition#. They #verb.possession# a new #noun.artifact# shaped like a #noun.shape#, forging a #noun.relation# that restored peace. Returning home, they shared #noun.food# with the #noun.group# and #verb.social# in celebration—forever changed by their #verb.body# and #verb.consumption# in the face of the unknown."
+        ],
+
+        "unknown": [
+          "Zorath Prime",
+          "Kelaris"
+        ],
+        "noun.act": [
+          "research",
+          "exploration"
+        ],
+        "noun.person": [
+          "researcher",
+          "captain"
+        ],
+        "noun.event": [
+          "crisis",
+          "invasion"
+        ],
+        "noun.artifact": [
+          "stasis crystal",
+          "teleporter"
+        ],
+        "verb.stative": [
+          "ponder",
+          "wonder"
+        ],
+        "adv.all": [
+          "cautiously",
+          "bravely"
+        ],
+        "noun.quantity": [
+          "multitudes",
+          "vast fields"
+        ],
+        "verb.social": [
+          "rejoice",
+          "unite"
+        ],
+        "noun.location": [
+          "colony",
+          "station"
+        ],
+        "adj.all": [
+          "mysterious",
+          "ancient"
+        ],
+        "noun.object": [
+          "compass",
+          "datapad"
+        ],
+        "noun.substance": [
+          "radiant alloy",
+          "quicksilver dust"
+        ],
+        "noun.communication": [
+          "message",
+          "communique"
+        ],
+        "noun.possession": [
+          "legacy",
+          "fortune"
+        ],
+        "noun.cognition": [
+          "innovation",
+          "insight"
+        ],
+        "noun.time": [
+          "twilight",
+          "era"
+        ],
+        "noun.attribute": [
+          "endurance",
+          "clarity"
+        ],
+        "verb.consumption": [
+          "absorb",
+          "devour"
+        ],
+        "noun.state": [
+          "calm",
+          "turmoil"
+        ],
+        "verb.possession": [
+          "claim",
+          "obtain"
+        ],
+        "noun.group": [
+          "crew",
+          "council"
+        ],
+        "verb.change": [
+          "alter",
+          "reshape"
+        ],
+        "noun.animal": [
+          "gryphon",
+          "drone-lizard"
+        ],
+        "noun.feeling": [
+          "hope",
+          "fear"
+        ],
+        "verb.motion": [
+          "dash",
+          "soar"
+        ],
+        "verb.communication": [
+          "signal",
+          "shout"
+        ],
+        "verb.weather": [
+          "stormed",
+          "rained"
+        ],
+        "verb.perception": [
+          "observe",
+          "sense"
+        ],
+        "noun.body": [
+          "hands",
+          "eyes"
+        ],
+        "verb.body": [
+          "tremble",
+          "kneel"
+        ],
+        "verb.emotion": [
+          "despair",
+          "rejoice"
+        ],
+        "noun.phenomenon": [
+          "eclipse",
+          "ion storm"
+        ],
+        "noun.plant": [
+          "glowshroom",
+          "whisper-vine"
+        ],
+        "verb.cognition": [
+          "calculate",
+          "deduce"
+        ],
+        "verb.contact": [
+          "touch",
+          "grasp"
+        ],
+        "noun.Tops": [
+          "peaks",
+          "mountaintops"
+        ],
+        "adj.pert": [
+          "stellar",
+          "bio-engineered"
+        ],
+        "noun.shape": [
+          "sphere",
+          "pyramid"
+        ],
+        "noun.relation": [
+          "pact",
+          "accord"
+        ],
+        "noun.process": [
+          "synthesis",
+          "adaptation"
+        ],
+        "verb.creation": [
+          "forge",
+          "build"
+        ],
+        "verb.competition": [
+          "triumph",
+          "prevail"
+        ],
+        "noun.food": [
+          "feast",
+          "banquet"
+        ]
+      };
+
       // Create the Tracery grammar object
-      const grammar = tracery.createGrammar(grammarData);
-
-      // Optionally add any modifiers here if needed
-      // grammar.addModifiers(tracery.baseEngModifiers);
-
-      // Generate text by flattening the #origin# rule
-      const story = grammar.flatten("#origin#");
-
-      // Display the generated text in the page
-      $("#output").text(story);
-    });
-  </script>
-</body>
-</html>
+        const grammar = tracery.createGrammar(grammarData);
+      });
