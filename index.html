@@ -22,6 +22,9 @@
   <script src="jquery-3.7.1.min.js"></script>
   <!-- Load local Tracery -->
   <script src="tracery.min.js"></script>
+  <script>
+    console.log("Tracery script loaded");
+  </script>
 </head>
 <body>
   <h1>Generated Science Fiction Story</h1>
@@ -32,8 +35,11 @@
       // Ensure Tracery is loaded
       if (typeof tracery === 'undefined') {
         $("#output").text("Error: Tracery library not loaded.");
+        console.error("Tracery library not loaded.");
         return;
       }
+
+      console.log("Tracery library loaded successfully.");
 
       // Load the JSON grammar file using jQuery's getJSON
       $.getJSON("grammer.json")
@@ -47,6 +53,7 @@
         })
         .fail(function(jqXHR, textStatus, errorThrown) {
           $("#output").text("Error loading JSON: " + textStatus + " " + errorThrown);
+          console.error("Error loading JSON: " + textStatus + " " + errorThrown);
         });
     });
   </script>
