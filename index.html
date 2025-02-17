@@ -18,40 +18,26 @@
       line-height: 1.6;
     }
   </style>
-  <!-- Load local jQuery first -->
-  <script src="jquery.min.js"></script>
-  <!-- Load Tracery from CDN -->
-  <script src="https://cdn.jsdelivr.net/npm/tracery-grammar@0.1.0/dist/tracery.min.js"></script>
 </head>
 <body>
   <h1>Generated Science Fiction Story</h1>
   <div id="output">Loading story...</div>
 
+  <!-- Load local jQuery -->
+  <script src="jquery.min.js"></script>
+  <!-- Load local Tracery -->
+  <script src="tracery.min.js"></script>
   <script>
     $(document).ready(function() {
-      // Load both the base grammar (grammer.json) and word lists (words.json) concurrently.
-      $.when($.getJSON("grammer.json"), $.getJSON("words.json"))
-        .done(function(grammarData, wordsData) {
-          // Extract data from the jQuery responses.
-          var baseGrammar = grammarData[0];
-          var wordLists = wordsData[0];
-
-          // For each key in the word lists, convert the array of objects
-          // (with properties like "word" and "frequency") into an array of word strings.
-          for (var key in wordLists) {
-            if (wordLists.hasOwnProperty(key)) {
-              baseGrammar[key] = wordLists[key].map(function(item) {
-                return item.word;
-              });
-            }
-          }
-
-          // Create a Tracery grammar using the merged data.
-          var grammar = tracery.createGrammar(baseGrammar);
-          // Flatten the grammar using the "origin" rule.
-          var outputText = grammar.flatten("#origin#");
-          // Display the generated text.
-          $("#output").text(outputText);
+      // Load the JSON grammar file using jQuery's getJSON
+      $.getJSON("grammer.json")
+        .done(function(grammarData) {
+          // Create the Tracery grammar with the loaded data
+          var traceryGrammar = tracery.createGrammar(grammarData);
+          // Generate the story using the "origin" rule
+          var generatedText = traceryGrammar.flatten("#origin#");
+          // Output the generated story on the page
+          $("#output").text(generatedText);
         })
         .fail(function(jqXHR, textStatus, errorThrown) {
           $("#output").text("Error loading JSON: " + textStatus + " " + errorThrown);
