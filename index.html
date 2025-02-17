@@ -31,20 +31,6 @@
   <!-- 3. Our custom script that uses jQuery + Tracery -->
   <script>
     $(document).ready(function() {
-      // Confirm jQuery is loaded:
-      if (typeof jQuery === 'undefined') {
-        console.error("jQuery is not loaded!");
-        $("#output").text("Error: jQuery not loaded");
-        return;
-      }
-      // Confirm Tracery is loaded:
-      if (typeof tracery === 'undefined') {
-        console.error("Tracery is not loaded!");
-        $("#output").text("Error: Tracery library not loaded");
-        return;
-      }
-      console.log("jQuery and Tracery are both loaded successfully.");
-
       // Load the grammar file (change "grammar.json" to match your real filename)
       $.getJSON("grammar.json")
         .done(function(grammarData) {
