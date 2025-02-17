@@ -23,49 +23,20 @@
   <h1>Generated Science Fiction Story</h1>
   <div id="output">Loading story...</div>
 
-  <!-- Load jQuery from CDN -->
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <!-- Load Tracery from jsDelivr -->
-  <script src="https://cdn.jsdelivr.net/gh/galaxykate/tracery/tracery.min.js"></script>
+  <!-- Load local jQuery -->
+  <script src="jquery.min.js"></script>
+  <!-- Load local Tracery -->
+  <script src="tracery.min.js"></script>
   <script>
     $(document).ready(function() {
-      // Load both JSON files concurrently using jQuery's getJSON
-      $.when($.getJSON("grammer.json"), $.getJSON("words.json"))
-        .done(function(grammarData, wordsData) {
-          // The data comes in as [ data, status, jqXHR ]
-          var baseGrammar = grammarData[0];
-          var wordLists = wordsData[0];
-
-          // Adjust base grammar tokens by escaping periods.
-          // For example, "#noun.time#" becomes "#noun\\.time#"
-          baseGrammar["intro"] = [
-            "The celebrated #noun\\.person.capitalize# embarked on a daring #noun\\.act# at #noun\\.location#, amidst strange #noun\\.plant#s, clutching a mysterious #noun\\.artifact# and a cherished #noun\\.possession#."
-          ];
-          baseGrammar["conflict"] = [
-            "Suddenly, a #noun\\.quantity# crowd witnessed a #adj\\.all# #noun\\.event# erupt; the skies #verb\\.weather# and a colossal #noun\\.animal# roared, instilling deep #noun\\.feeling# in all, as many began to #verb\\.social# and #verb\\.cognition# the unfolding mystery."
-          ];
-          baseGrammar["climax"] = [
-            "With determination, the brave #noun\\.group# #verb\\.motion# #adv\\.all# toward the chaos, striving to #verb\\.change# the dire #noun\\.state# of their world. Amidst this turmoil, a peculiar #noun\\.shape# appeared—a #noun\\.phenomenon# that seemed to #verb\\.perception# the very fabric of reality."
-          ];
-          baseGrammar["resolution"] = [
-            "Ultimately, through ingenious #verb\\.creation# and by #verb\\.possession# a hidden power, they #verb\\.competition# against the odds. As they #verb\\.consumption# a victory feast of #noun\\.food#, their collective #noun\\.cognition# illuminated the path to a future of renewed hope and prosperity."
-          ];
-
-          // Merge external word lists into the base grammar.
-          // For each key in wordLists, convert the array of objects to an array of words.
-          for (var key in wordLists) {
-            if (wordLists.hasOwnProperty(key)) {
-              baseGrammar[key] = wordLists[key].map(function(item) {
-                return item.word;
-              });
-            }
-          }
-
-          // Create the Tracery grammar with the combined data.
-          var traceryGrammar = tracery.createGrammar(baseGrammar);
-          // Generate the story using the "origin" rule.
+      // Load the JSON grammar file using jQuery's getJSON
+      $.getJSON("grammer.json")
+        .done(function(grammarData) {
+          // Create the Tracery grammar with the loaded data
+          var traceryGrammar = tracery.createGrammar(grammarData);
+          // Generate the story using the "origin" rule
           var generatedText = traceryGrammar.flatten("#origin#");
-          // Output the generated story on the page.
+          // Output the generated story on the page
           $("#output").text(generatedText);
         })
         .fail(function(jqXHR, textStatus, errorThrown) {
