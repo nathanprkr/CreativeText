@@ -1,0 +1,39 @@
+/* Import a futuristic font */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+
+body {
+  background-color: #0b0c10;
+  color: #66fcf1;
+  font-family: 'Orbitron', sans-serif;
+  margin: 20px;
+}
+
+h1 {
+  text-align: center;
+  font-size: 2.5em;
+  margin-bottom: 20px;
+  color: #45a29e;
+  text-shadow: 0 0 5px #66fcf1;
+}
+
+#output {
+  margin: 20px auto;
+  padding: 25px;
+  background: #1f2833;
+  border: 2px solid #45a29e;
+  border-radius: 8px;
+  width: 80%;
+  box-shadow: 0 0 15px rgba(102, 252, 241, 0.5);
+  font-size: 1.2em;
+  line-height: 1.6;
+}
+
+/* Additional styling for links, buttons, etc. */
+a {
+  color: #45a29e;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
