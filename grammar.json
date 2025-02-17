@@ -1,16 +1,195 @@
 {
-  "origin": ["#story#"],
-  "story": ["#intro# #conflict# #climax# #resolution#"],
-  "intro": [
-    "In the year #noun.time#, the celebrated #noun.person.capitalize# embarked on a daring #noun.act# at #noun.location#, amidst strange #noun.plant#s, clutching a mysterious #noun.artifact# and a cherished #noun.possession#."
+  "origin": [
+    "#firstSentence# #secondSentence#"
   ],
-  "conflict": [
-    "Suddenly, a #noun.quantity# crowd witnessed a #adj.all# #noun.event# erupt; the skies #verb.weather# and a colossal #noun.animal# roared, instilling deep #noun.feeling# in all, as many began to #verb.social# and #verb.cognition# the unfolding mystery."
+
+  "firstSentence": [
+    "No one in #place# could have believed #adj.time# that the #noun.mysterious# shimmering above the #environment# heralded such #noun.peril#, or that it spelled the #theme#."
   ],
-  "climax": [
-    "With determination, the brave #noun.group# #verb.motion# #adv.all# toward the chaos, striving to #verb.change# the dire #noun.state# of their world. Amidst this turmoil, a peculiar #noun.shape# appeared—a #noun.phenomenon# that seemed to #verb.perception# the very fabric of reality."
+
+  "secondSentence": [
+    "Yet by #timeunit#’s close, the #creature# had unleashed an unthinkable #event#, forcing #protagonist# to #action# for the sake of #concept#."
   ],
-  "resolution": [
-    "Ultimately, through ingenious #verb.creation# and by #verb.possession# a hidden power, they #verb.competition# against the odds. As they #verb.consumption# a victory feast of #noun.food#, their collective #noun.cognition# illuminated the path to a future of renewed hope and prosperity."
+
+  "place": [
+    "Ashwood Fields",
+    "Narrowchester",
+    "Braxton Crater",
+    "Veridian Cliffs",
+    "Harrow's End",
+    "Stellawick Downs",
+    "Lakeside Bastion",
+    "Redpine Hamlet",
+    "Grimsley Moor",
+    "Skyburn Village",
+    "Elmveil Gap",
+    "Magnus Bridge",
+    "Havenrock Post",
+    "Duskwood Span"
+  ],
+
+  "adj.time": [
+    "those final days",
+    "the twilight of our civilization",
+    "the last vestiges of peace",
+    "our final stand",
+    "the dying hush of the epoch",
+    "the quiet before the storm",
+    "our precarious calm",
+    "that inevitable dusk",
+    "the trailing edge of the old world",
+    "the penultimate hush",
+    "the threshold of apocalypse",
+    "the fading golden age"
+  ],
+
+  "noun.mysterious": [
+    "anomalous gleam",
+    "uncanny radiance",
+    "eerie glow",
+    "strange twinkling",
+    "haunting shimmer",
+    "spectral aura",
+    "otherworldly flicker",
+    "unknown brilliance",
+    "mesmeric flicker",
+    "unearthly halo",
+    "ethereal sparkle",
+    "enigmatic luminescence"
+  ],
+
+  "environment": [
+    "darkening sky",
+    "horizon’s edge",
+    "cursed dusk",
+    "ashen clouds",
+    "starlit expanse",
+    "haunted ridge",
+    "glimmering twilight",
+    "rolling stormfront",
+    "smoldering skyline",
+    "obscured heavens",
+    "silent outlands",
+    "shifting haze"
+  ],
+
+  "noun.peril": [
+    "cataclysm",
+    "doom",
+    "catastrophe",
+    "annihilation",
+    "dire tragedy",
+    "silent plague",
+    "ultimate ruin",
+    "mortal crisis",
+    "apocalyptic threat",
+    "massive upheaval",
+    "hellish descent",
+    "unholy reckoning"
+  ],
+
+  "theme": [
+    "downfall of humankind",
+    "end of ordinary life",
+    "collapse of order",
+    "twilight of reason",
+    "final unmaking of peace",
+    "cancellation of all certainties",
+    "extinction of hope",
+    "unraveling of civilization",
+    "unfathomable downfall",
+    "terminal madness",
+    "fraying tapestry of existence",
+    "the last echo of freedom"
+  ],
+
+  "timeunit": [
+    "sunset",
+    "week",
+    "fortnight",
+    "twilight hour",
+    "eve",
+    "month's end",
+    "solar cycle",
+    "brief hour",
+    "dawn watch",
+    "year's wane",
+    "passing hour",
+    "fateful minute"
+  ],
+
+  "creature": [
+    "inexplicable being",
+    "towering invader",
+    "colossal wanderer",
+    "unearthly titan",
+    "silhouetted terror",
+    "celestial horror",
+    "monolithic presence",
+    "drifting harbinger",
+    "leviathan of dusk",
+    "malevolent watcher",
+    "phantasmic juggernaut",
+    "lurking fiend"
+  ],
+
+  "event": [
+    "horror",
+    "turmoil",
+    "chaos",
+    "ruination",
+    "dark uprising",
+    "whispered collapse",
+    "brutal cataclysm",
+    "storm of screams",
+    "unleashed panic",
+    "nightmarish tide",
+    "great rift",
+    "spiraling crisis"
+  ],
+
+  "protagonist": [
+    "the lone observer",
+    "the frightened wanderer",
+    "the nameless refugee",
+    "the weary sentinel",
+    "the untested scout",
+    "the pale witness",
+    "the last historian",
+    "the silent outcast",
+    "the reluctant savior",
+    "the ragged nomad",
+    "the grief-stricken guardian",
+    "the shadowed fugitive"
+  ],
+
+  "action": [
+    "flee into the unknown",
+    "barricade every passage",
+    "cast aside all ties",
+    "beckon a final stand",
+    "plead with silent skies",
+    "venture beyond reason",
+    "shield the broken",
+    "ignite a beacon",
+    "map out forbidden territory",
+    "disrupt the swirling madness",
+    "unveil a hidden path",
+    "defy the encroaching dark"
+  ],
+
+  "concept": [
+    "survival",
+    "hope",
+    "truth",
+    "tomorrow's dawn",
+    "redemption",
+    "all that remains",
+    "the fragile future",
+    "an unspoken prayer",
+    "the final testament",
+    "our vanishing dream",
+    "the spirit of resistance",
+    "an unborn promise"
   ]
 }
