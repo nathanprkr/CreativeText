@@ -1,234 +1,25 @@
 {
-  "origin": [
-    "#firstSentence# \n #secondSentence#"
-  ],
-
-  "firstSentence": [
-    "No one in #place# could have believed #time# that the #mysterious# shimmering above the #environment# heralded such #peril#, or that it spelled the #theme#."
-  ],
-
-  "secondSentence": [
-    "Yet by #timeunit# close, the #creature# had unleashed an unthinkable #event#, forcing #protagonist# to #action# for the sake of #concept#."
-  ],
-
-  "place": [
-    "Ashwood Fields",
-    "Narrowchester",
-    "Braxton Crater",
-    "Veridian Cliffs",
-    "Harrow's End",
-    "Stellawick Downs",
-    "Lakeside Bastion",
-    "Redpine Hamlet",
-    "Grimsley Moor",
-    "Skyburn Village",
-    "Elmveil Gap",
-    "Magnus Bridge",
-    "Havenrock Post",
-    "Duskwood Span"
-  ],
-
-  "time": [
-    "those final days",
-    "the twilight of our civilization",
-    "the last vestiges of peace",
-    "our final stand",
-    "the dying hush of the epoch",
-    "the quiet before the storm",
-    "our precarious calm",
-    "that inevitable dusk",
-    "the trailing edge of the old world",
-    "the penultimate hush",
-    "the threshold of apocalypse",
-    "the fading golden age"
-  ],
-
-  "mysterious": [
-    "anomalous gleam",
-    "uncanny radiance",
-    "eerie glow",
-    "strange twinkling",
-    "haunting shimmer",
-    "spectral aura",
-    "otherworldly flicker",
-    "unknown brilliance",
-    "mesmeric flicker",
-    "unearthly halo",
-    "ethereal sparkle",
-    "enigmatic luminescence"
-  ],
-
-  "environment": [
-    "darkening sky",
-    "horizon’s edge",
-    "cursed dusk",
-    "ashen clouds",
-    "starlit expanse",
-    "haunted ridge",
-    "glimmering twilight",
-    "rolling stormfront",
-    "smoldering skyline",
-    "obscured heavens",
-    "silent outlands",
-    "shifting haze"
-  ],
-
-  "peril": [
-    "cataclysm",
-    "doom",
-    "catastrophe",
-    "annihilation",
-    "dire tragedy",
-    "silent plague",
-    "ultimate ruin",
-    "mortal crisis",
-    "apocalyptic threat",
-    "massive upheaval",
-    "hellish descent",
-    "unholy reckoning"
-  ],
-
-  "theme": [
-    "downfall of humankind",
-    "end of ordinary life",
-    "collapse of order",
-    "twilight of reason",
-    "final unmaking of peace",
-    "cancellation of all certainties",
-    "extinction of hope",
-    "unraveling of civilization",
-    "unfathomable downfall",
-    "terminal madness",
-    "fraying tapestry of existence",
-    "the last echo of freedom"
-  ],
-
-  "timeunit": [
-    "sunset",
-    "week",
-    "fortnight",
-    "twilight hour",
-    "eve",
-    "month's end",
-    "solar cycle",
-    "brief hour",
-    "dawn watch",
-    "year's wane",
-    "passing hour",
-    "fateful minute"
-  ],
-
-  "creature": [
-    "inexplicable being",
-    "towering invader",
-    "colossal wanderer",
-    "unearthly titan",
-    "silhouetted terror",
-    "celestial horror",
-    "monolithic presence",
-    "drifting harbinger",
-    "leviathan of dusk",
-    "malevolent watcher",
-    "phantasmic juggernaut",
-    "lurking fiend"
-  ],
-
-  "event": [
-    "horror",
-    "turmoil",
-    "chaos",
-    "ruination",
-    "dark uprising",
-    "whispered collapse",
-    "brutal cataclysm",
-    "storm of screams",
-    "unleashed panic",
-    "nightmarish tide",
-    "great rift",
-    "spiraling crisis"
-  ],
-
-  "protagonist": [
-    "the lone observer",
-    "the frightened wanderer",
-    "the nameless refugee",
-    "the weary sentinel",
-    "the untested scout",
-    "the pale witness",
-    "the last historian",
-    "the silent outcast",
-    "the reluctant savior",
-    "the ragged nomad",
-    "the grief-stricken guardian",
-    "the shadowed fugitive"
-  ],
-
-  "action": [
-    "flee into the unknown",
-    "barricade every passage",
-    "cast aside all ties",
-    "beckon a final stand",
-    "plead with silent skies",
-    "venture beyond reason",
-    "shield the broken",
-    "ignite a beacon",
-    "map out forbidden territory",
-    "disrupt the swirling madness",
-    "unveil a hidden path",
-    "defy the encroaching dark"
-  ],
-
+  "origin": ["#alienStatement# #declaration#"],
+  "alienStatement": ["#pronoun# #verb# #det# #adjective# #species# #prep# #place#."],
+  "declaration": ["#article# #mysterious# #phenomenon# #verb2# #concept#."],
+  
+  "pronoun": ["I", "We"],
+  "verb": ["am", "are"],
+  "det": ["a", "an"],
+  "adjective": ["lonely", "ancient", "celestial", "ominous", "spectral"],
+  "species": ["martian", "alien", "invader", "otherworlder"],
+  "prep": ["from"],
+  "place": ["Red Dunes", "Scarlet Plains", "the Void", "Crimson Expanse"],
+  
+  "article": ["The"],
+  "mysterious": ["uncanny", "eerie", "otherworldly", "spectral", "enigmatic"],
+  "phenomenon": ["radiance", "glow", "flicker", "luminescence"],
+  "verb2": ["reveals", "unveils", "heralds"],
   "concept": [
-    "survival",
-    "hope",
-    "truth",
-    "tomorrow's dawn",
-    "redemption",
-    "all that remains",
-    "the fragile future",
-    "an unspoken prayer",
-    "the final testament",
-    "our vanishing dream",
-    "the spirit of resistance",
-    "an unborn promise"
-  ],
-  "image": [
-    "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 200 200\" width=\"200\" height=\"200\"><!-- Alien Head --><ellipse cx=\"100\" cy=\"100\" rx=\"60\" ry=\"80\" fill=\"#headFill#\" stroke=\"#headStroke#\" stroke-width=\"3\" /><!-- Left Eye --><ellipse cx=\"70\" cy=\"80\" rx=\"20\" ry=\"25\" fill=\"#eyeFill#\" /><!-- Right Eye --><ellipse cx=\"130\" cy=\"80\" rx=\"20\" ry=\"25\" fill=\"#eyeFill#\" /><!-- Simple Curved Mouth --><path d=\"M 80 130 Q 100 150 120 130\" fill=\"none\" stroke=\"#mouthStroke#\" stroke-width=\"3\" /></svg>"
-  ],
-  "headFill": [
-    "limegreen",
-    "mediumspringgreen",
-    "forestgreen",
-    "seagreen",
-    "olivedrab",
-    "aquamarine",
-    "teal"
-  ],
-  "headStroke": [
-    "darkgray",
-    "gray",
-    "dimgray",
-    "slategray",
-    "lightgray",
-    "silver",
-    "gainsboro"
-  ],
-  "eyeFill": [
-    "black",
-    "dimgray",
-    "gray",
-    "darkgray",
-    "slategray",
-    "lightgray",
-    "silver"
-  ],
-  "mouthStroke": [
-    "darkgray",
-    "gray",
-    "dimgray",
-    "slategray",
-    "lightgray",
-    "silver",
-    "gainsboro"
+    "the fall of man",
+    "the collapse of worlds",
+    "unending chaos",
+    "our doomed fate",
+    "the unraveling of existence"
   ]
 }
