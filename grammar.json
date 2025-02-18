@@ -2,24 +2,142 @@
   "origin": ["#alienStatement# #declaration#"],
   "alienStatement": ["#pronoun# #verb# #det# #adjective# #species# #prep# #place#."],
   "declaration": ["#article# #mysterious# #phenomenon# #verb2# #concept#."],
-  
-  "pronoun": ["I", "We"],
-  "verb": ["am", "are"],
-  "det": ["a", "an"],
-  "adjective": ["lonely", "ancient", "celestial", "ominous", "spectral"],
-  "species": ["martian", "alien", "invader", "otherworlder"],
-  "prep": ["from"],
-  "place": ["Red Dunes", "Scarlet Plains", "the Void", "Crimson Expanse"],
-  
-  "article": ["The"],
-  "mysterious": ["uncanny", "eerie", "otherworldly", "spectral", "enigmatic"],
-  "phenomenon": ["radiance", "glow", "flicker", "luminescence"],
-  "verb2": ["reveals", "unveils", "heralds"],
+
+  "pronoun": [
+    "I",
+    "We"
+  ],
+  "verb": [
+    "am",
+    "are"
+  ],
+  "det": [
+    "a",
+    "an"
+  ],
+  "adjective": [
+    "lonely",
+    "ancient",
+    "celestial",
+    "ominous",
+    "spectral",
+    "stark",
+    "otherworldly",
+    "mysterious",
+    "grim",
+    "desolate",
+    "phantasmic",
+    "ethereal",
+    "cosmic",
+    "stellar",
+    "interplanetary"
+  ],
+  "species": [
+    "Martian",
+    "alien",
+    "invader",
+    "otherworlder",
+    "cosmic voyager",
+    "celestial nomad",
+    "star wanderer",
+    "extraterrestrial",
+    "spacefaring emissary",
+    "interstellar raider",
+    "solar envoy",
+    "galactic outlander",
+    "void dweller",
+    "nebular specter",
+    "quantum wanderer"
+  ],
+  "prep": [
+    "from"
+  ],
+  "place": [
+    "Red Dunes",
+    "Scarlet Plains",
+    "the Void",
+    "Crimson Expanse",
+    "Silver Crater",
+    "Obsidian Fields",
+    "Golden Barrens",
+    "Nebula Ridge",
+    "Atomic Wasteland",
+    "Lunar Highlands",
+    "Stellar Plateau",
+    "Iron Mesa",
+    "Plasma Basin",
+    "Radiant Expanse",
+    "Twilight Frontier"
+  ],
+  "article": [
+    "The"
+  ],
+  "mysterious": [
+    "uncanny",
+    "eerie",
+    "otherworldly",
+    "spectral",
+    "enigmatic",
+    "mysterious",
+    "inexplicable",
+    "arcane",
+    "surreal",
+    "unearthly",
+    "bizarre",
+    "cryptic",
+    "paranormal",
+    "alien",
+    "occult"
+  ],
+  "phenomenon": [
+    "radiance",
+    "glow",
+    "flicker",
+    "luminescence",
+    "incandescence",
+    "brilliance",
+    "shimmer",
+    "gleam",
+    "glimmer",
+    "phosphorescence",
+    "effulgence",
+    "glare",
+    "beam",
+    "sparkle",
+    "scintillation"
+  ],
+  "verb2": [
+    "reveals",
+    "unveils",
+    "heralds",
+    "proclaims",
+    "discloses",
+    "manifests",
+    "announces",
+    "signals",
+    "exposes",
+    "broadcasts",
+    "intimates",
+    "declares",
+    "presents",
+    "divulges",
+    "signifies"
+  ],
   "concept": [
     "the fall of man",
     "the collapse of worlds",
     "unending chaos",
     "our doomed fate",
-    "the unraveling of existence"
+    "the unraveling of existence",
+    "the twilight of civilization",
+    "the end of all order",
+    "the disintegration of reality",
+    "the extinction of hope",
+    "the demise of empires",
+    "the breaking of cosmic law",
+    "the shattering of destiny",
+    "the dissolution of time",
+    "the final reckoning",
+    "the last echo of eternity"
   ]
 }

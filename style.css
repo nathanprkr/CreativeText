@@ -4,19 +4,26 @@
 /* Import Orbitron for body text as fallback */
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
 
+/* Ensure the html and body elements cover the full viewport */
+html, body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
 body {
   background: url('space.jpg') no-repeat center center fixed;
   background-size: cover;
   color: lime;
   font-family: 'Orbitron', Arial, sans-serif;
-  margin: 0;
-  padding: 20px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
   min-height: 100vh;
+  padding: 20px;
 }
 
 h1 {
