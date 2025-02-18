@@ -1,8 +1,12 @@
-/* Import a futuristic font */
+/* Import Audiowide for a futuristic title font (if desired) */
+@import url('https://fonts.googleapis.com/css2?family=Audiowide&display=swap');
+
+/* Import Orbitron for body text as fallback */
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
 
 body {
-  background-color: black;
+  background: black url('space.jpg') no-repeat center center fixed;
+  background-size: cover;
   color: lime;
   font-family: 'Orbitron', Arial, sans-serif;
   margin: 0;
@@ -16,6 +20,7 @@ body {
 }
 
 h1 {
+  font-family: 'Audiowide', sans-serif; /* Title uses Audiowide */
   font-size: 2.5em;
   margin-bottom: 20px;
   color: white; /* Title text white */
@@ -25,7 +30,7 @@ h1 {
 #output {
   margin-top: 20px;
   padding: 20px;
-  background-color: #111;
+  background-color: rgba(17, 17, 17, 0.8);
   border: 2px solid lime;
   border-radius: 10px;
   width: 80%;
