@@ -1,6 +1,6 @@
 {
   "origin": [
-    "#firstSentence# #secondSentence#"
+    "#firstSentence# \n #secondSentence#"
   ],
 
   "firstSentence": [
