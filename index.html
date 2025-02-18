@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <title>Tracery Story Generator</title>
   <link rel="stylesheet" href="style.css">
-  <!-- Load jQuery, then p5 and Tracery -->
+  <!-- Load local libraries -->
   <script src="jquery-3.7.1.min.js"></script>
   <script src="p5.min.js"></script>
   <script src="tracery.min.js"></script>
@@ -13,56 +13,57 @@
   <h1>Generated Science Fiction Story</h1>
   
   <script>
-    window.onload = function() {
-      let grammarData, traceryGrammar;
-      // An array to hold falling texts with their position
-      let fallingTexts = [];
+    // Global variables
+    let grammarData;
+    let traceryGrammar;
+    let fallingTexts = []; // Array to hold our falling text objects
 
-      // p5 preload() loads external assets before setup()
-      window.preload = function() {
-        // Load the grammar JSON file from local disk
-        grammarData = loadJSON('grammar.json');
-      };
+    function setup() {
+      // Create a full-window canvas
+      createCanvas(windowWidth, windowHeight);
+      background(0);
+      fill('lime');      // Neon green text
+      textSize(32);
+      textAlign(CENTER, CENTER);
 
-      window.setup = function() {
-        // Create a full-window canvas
-        createCanvas(windowWidth, windowHeight);
-        background(0);
-        fill('lime');        // Neon green fill for text
-        textSize(32);
-        textAlign(CENTER, CENTER);
-        // Create the tracery grammar from the loaded JSON
+      // Use jQuery to load the grammar JSON file asynchronously
+      $.getJSON('grammar.json', function(data) {
+        grammarData = data;
         traceryGrammar = tracery.createGrammar(grammarData);
-      };
+      });
+    }
 
-      window.draw = function() {
-        background(0);
-        // Loop through each falling text, draw it, and update its y position
-        for (let i = 0; i < fallingTexts.length; i++) {
-          let item = fallingTexts[i];
-          text(item.text, item.x, item.y);
-          // Increase y so that text falls
-          item.y += 1;
-        }
-      };
+    function draw() {
+      background(0);
+      // Loop through each falling text and draw it,
+      // then update its y position to make it fall
+      for (let i = 0; i < fallingTexts.length; i++) {
+        let item = fallingTexts[i];
+        text(item.text, item.x, item.y);
+        item.y += 1;  // Adjust this value to control falling speed
+      }
+    }
 
-      // When the user clicks, generate new text at mouse location
-      window.mousePressed = function() {
-        // Generate the text using the "origin" rule
+    function mousePressed() {
+      // Only generate text if the grammar has been loaded
+      if (traceryGrammar) {
+        // Generate text using the "origin" rule from the grammar
         let newText = traceryGrammar.flatten("#origin#");
-        // Add new text object with starting position from the click
+        // Add the new text object at the mouse click position
         fallingTexts.push({
           text: newText,
           x: mouseX,
           y: mouseY
         });
-      };
+      } else {
+        console.log("Grammar not loaded yet!");
+      }
+    }
 
-      // Adjust canvas size on window resize
-      window.windowResized = function() {
-        resizeCanvas(windowWidth, windowHeight);
-      };
-    };
+    // Adjust the canvas size if the window is resized
+    function windowResized() {
+      resizeCanvas(windowWidth, windowHeight);
+    }
   </script>
 </body>
 </html>
