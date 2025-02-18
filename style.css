@@ -1,10 +1,10 @@
-/* Import Audiowide for a futuristic title font (if desired) */
+/* Import Audiowide for the title font */
 @import url('https://fonts.googleapis.com/css2?family=Audiowide&display=swap');
 
-/* Import Orbitron for body text as fallback */
+/* Import Orbitron as fallback for body text */
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
 
-/* Ensure the html and body elements cover the full viewport */
+/* Make html and body cover the full viewport */
 html, body {
   height: 100%;
   width: 100%;
@@ -14,7 +14,7 @@ html, body {
 
 body {
   background: url('space.jpg') no-repeat center center fixed;
-  background-size: cover;
+  background-size: cover; /* Ensures the image covers the page */
   color: lime;
   font-family: 'Orbitron', Arial, sans-serif;
   display: flex;
