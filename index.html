@@ -27,7 +27,7 @@
       textAlign(CENTER, CENTER);
 
       // Use jQuery to load the grammar JSON file asynchronously
-      $.getJSON('grammar.json', function(data) {
+      $.getJSON('grammar.json?v=' + new Date().getTime(), function(data) {
         grammarData = data;
         traceryGrammar = tracery.createGrammar(grammarData);
       });
